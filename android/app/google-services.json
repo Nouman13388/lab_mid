@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "876196456698",
+    "project_id": "labmid-c9064",
+    "storage_bucket": "labmid-c9064.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876196456698:android:b634175e7705eedcaf0143",
+        "android_client_info": {
+          "package_name": "com.example.lab_mid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC90ybBMJbu953nPf0mB5qssBM4qwqOKsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
