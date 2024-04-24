@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -70,45 +71,123 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              Center(
+                child: Image.asset(
+                  'lib/assets/cignifi.jpeg',
+                  width: 200,
+                ),
+              ),
+              Text(
+                'Sign Up for an Account',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(height: 30),
               TextField(
                 controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(
+                  hintText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
               ),
-              const SizedBox(
-                  height:
-                      16), // Add spacing between email field and password field
+              const SizedBox(height: 10),
               TextField(
                 controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
+                decoration: const InputDecoration(
+                  hintText: 'Password',
+                  border: OutlineInputBorder(),
+                ),
               ),
-              const SizedBox(
-                  height:
-                      16), // Add spacing between password field and confirm password field
+              const SizedBox(height: 10),
               TextField(
                 controller: _confirmPasswordController,
-                decoration:
-                    const InputDecoration(labelText: 'Confirm Password'),
                 obscureText: true,
+                decoration: const InputDecoration(
+                  hintText: 'Confirm Password',
+                  border: OutlineInputBorder(),
+                ),
               ),
-              const SizedBox(
-                  height:
-                      20), // Add spacing between confirm password field and sign up button
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _isLoading ? null : _signUpWithEmail,
-                child: const Text('Sign Up'),
+                child: _isLoading
+                    ? const CircularProgressIndicator()
+                    : const Text('Sign Up'),
               ),
-              if (_isLoading)
-                const CircularProgressIndicator(), // Show loading indicator if _isLoading is true
+              const SizedBox(height: 20),
+              Text(
+                'Or sign up with',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: 80,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        FontAwesomeIcons.google,
+                        size: 40,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: 80,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        FontAwesomeIcons.facebook,
+                        size: 40,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: 80,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(FontAwesomeIcons.twitter,
+                          size: 40, color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

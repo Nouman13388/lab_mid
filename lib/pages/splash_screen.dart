@@ -1,5 +1,6 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:lab_mid/pages/home_page.dart';
+import 'package:lab_mid/pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -7,33 +8,43 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late Timer _timer;
+
   @override
   void initState() {
     super.initState();
-    // Add any initialization tasks here
 
-    // Example of navigating to the home page after 2 seconds
-    Future.delayed(const Duration(seconds: 2), () {
+    const splashDuration = Duration(seconds: 2);
+
+    _timer = Timer(splashDuration, () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()), // Replace HomePage() with the page you want to navigate to
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       );
     });
   }
 
   @override
+  void dispose() {
+    // Dispose the timer to prevent memory leaks when the widget is disposed
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white, // Set your desired background color
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'assets/logo.png', // Add your desired logo image
-              height: 150.0, // Set your desired logo height
+              'lib/assets/cignifi.jpeg',
+              width: 200,
             ),
-            )
+            const SizedBox(height: 24),
+            const CircularProgressIndicator(),
           ],
         ),
       ),

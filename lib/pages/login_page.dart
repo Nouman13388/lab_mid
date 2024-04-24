@@ -9,7 +9,7 @@ import 'package:lab_mid/pages/signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -174,6 +174,12 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              Center(
+                child: Image.asset(
+                  'lib/assets/cignifi.jpeg',
+                  width: 200,
+                ),
+              ),
               Text(
                 'Login to your Account',
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
@@ -260,11 +266,10 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Image.asset(
-                        'lib/assets/google.png',
-                        fit: BoxFit.scaleDown,
-                        width: 20,
-                        height: 20,
+                      child: const Icon(
+                        FontAwesomeIcons.google,
+                        size: 40,
+                        color: Colors.red,
                       ),
                     ),
                   ),
@@ -284,9 +289,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(width: 20),
                   InkWell(
-                    onTap: () {
-                      
-                    },
+                    onTap: () {},
                     child: Container(
                       width: 80,
                       height: 70,
